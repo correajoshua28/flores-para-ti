@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/flores.css">
+
+    <title>Flores Para Ti</title>
+</head>
+
+<body>
+
+    <main class="contenedor-principal">
+
+        <section class="tarjeta">
+
+            <div class="inicio" id="inicio">
+                <div class="inicio-contenido">
+                    <div class="girasol-inicio" id="girasolInicial">
+                        <img src="img/g1.png" alt="Girasol">
+                    </div>
+                    <h1>Flores Para Mi Princesa</h1>
+                    <p>Haz clic para comenzar</p>
+                </div>
+            </div>
+
+            <!-- SEMILLA QUE CAERÁ -->
+            <div class="semilla" id="semilla"></div>
+
+            <div class="escena" id="escena">
+
+                <div class="mensaje-superior" id="mensajeSuperior"></div>
+
+                <div class="mensaje-amor" id="mensajeAmor"></div>
+
+                <div class="mensaje-tiempo" id="mensajeTiempo">
+                    Mi amor por ti comenzó hace...
+                </div>
+
+                <div class="contador-amor" id="contadorAmor">
+
+                    <div class="contador-bloque">
+                        <span id="dias">0</span>
+                        <small>Días</small>
+                    </div>
+
+                    <div class="contador-separador">:</div>
+
+                    <div class="contador-bloque">
+                        <span id="horas">00</span>
+                        <small>Horas</small>
+                    </div>
+
+                    <div class="contador-separador">:</div>
+
+                    <div class="contador-bloque">
+                        <span id="minutos">00</span>
+                        <small>Minutos</small>
+                    </div>
+
+                    <div class="contador-separador">:</div>
+
+                    <div class="contador-bloque">
+                        <span id="segundos">00</span>
+                        <small>Segundos</small>
+                    </div>
+
+                </div>
+
+                <div class="arbol">
+
+                    <svg class="arbol-svg"
+                        viewBox="0 0 450 520"
+                        xmlns="http://www.w3.org/2000/svg">
+
+                        <!-- TRONCO -->
+                        <path class="madera tronco-svg"
+                            d="
+                            M205 500
+                            C208 455 211 410 214 365
+                            C216 325 218 285 218 245
+                            C218 205 216 165 218 125
+
+                            C225 153 227 190 228 225
+                            C229 267 229 310 231 350
+                            C234 400 237 452 242 500
+                            Z" />
+
+
+                        <!-- RAMA IZQUIERDA INFERIOR -->
+                        <path class="madera rama-svg"
+                            d="
+                            M220 350
+                            C195 328 170 309 142 293
+                            C112 276 82 267 48 264
+
+                            C82 273 111 286 139 305
+                            C168 325 193 343 221 367
+                            Z" />
+
+
+                        <!-- RAMA IZQUIERDA MEDIA -->
+                        <path class="madera rama-svg"
+                            d="
+                            M220 292
+                            C199 266 178 242 151 222
+                            C126 204 99 194 70 191
+
+                            C100 201 126 215 150 235
+                            C177 257 198 279 221 307
+                            Z" />
+
+
+                        <!-- RAMA IZQUIERDA SUPERIOR -->
+                        <path class="madera rama-svg"
+                            d="
+                            M220 235
+                            C201 208 184 183 164 158
+                            C143 133 119 113 90 101
+
+                            C120 119 143 141 163 167
+                            C184 193 201 218 221 249
+                            Z" />
+
+
+                        <!-- RAMA DERECHA INFERIOR -->
+                        <path class="madera rama-svg"
+                            d="
+                            M226 318
+                            C248 288 271 265 298 247
+                            C323 231 349 222 378 219
+
+                            C349 230 325 243 301 260
+                            C274 280 251 304 227 334
+                            Z" />
+
+
+                        <!-- RAMA DERECHA SUPERIOR -->
+                        <path class="madera rama-svg"
+                            d="
+                            M225 248
+                            C243 217 261 190 283 168
+                            C305 146 329 130 356 122
+
+                            C329 136 306 154 285 177
+                            C263 201 246 226 226 264
+                            Z" />
+
+
+                        <!-- PUNTA CENTRAL -->
+                        <path class="madera rama-svg"
+                            d="
+                            M220 202
+                            C216 170 214 139 211 111
+                            C209 86 204 66 195 48
+
+                            C211 67 219 88 222 112
+                            C225 142 225 172 224 204
+                            Z" />
+
+
+                        <!-- RAMITAS FINAS -->
+
+                        
+
+                    </svg>
+
+
+                    <div class="corazon-flores" id="corazonFlores"></div>
+
+                </div>
+
+                <div class="linea-suelo"></div>
+            </div>
+
+        </section>
+
+    </main>
+    
+    <script src="js/flores.js"></script>
+
+</body>
+
+</html>
