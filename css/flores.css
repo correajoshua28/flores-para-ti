@@ -1,0 +1,1209 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #e8e8e8;
+}
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+
+.contenedor-principal {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* =========================================
+   TARJETA
+   ========================================= */
+
+.tarjeta {
+    position: relative;
+
+    width: 100%;
+    max-width: 1100px;
+    height: 650px;
+
+    background-color: #fff5e6;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   PANTALLA DE INICIO
+   ========================================= */
+
+.inicio {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    transition: opacity 0.8s ease,
+            transform 0.8s ease;
+}
+
+.inicio.ocultar {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+.inicio-contenido {
+    text-align: center;
+    color: #49392f;
+}
+
+
+/* GIRASOL */
+
+.girasol-inicio {
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: respirar 2s ease-in-out infinite;
+}
+
+.girasol-inicio img {
+    width: 85px;
+    height: 85px;
+
+    object-fit: contain;
+
+    display: block;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+
+/* TÍTULO */
+
+.inicio h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 38px;
+    font-weight: 600;
+
+    margin-bottom: 12px;
+
+    color: #49392f;
+}
+
+
+/* TEXTO PEQUEÑO */
+
+.inicio p {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    color: #9a806c;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   ESCENA PRINCIPAL
+   ========================================= */
+
+.escena {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.8s ease;
+}
+
+.escena.mostrar {
+    opacity: 1;
+}
+
+
+/* =========================================
+   ÁRBOL
+   ========================================= */
+
+.arbol {
+    position: absolute;
+
+    width: 450px;
+    height: 520px;
+
+    /* Empieza CENTRADO donde cayó la semilla */
+    left: 50%;
+    right: auto;
+
+    bottom: 30px;
+
+    transform: translateX(-50%);
+
+    transition:
+        left 1.8s cubic-bezier(.22, .61, .36, 1),
+        transform 1.8s cubic-bezier(.22, .61, .36, 1);
+}
+
+/* Después del impacto,
+   todo el árbol se desplaza hacia la derecha */
+.arbol.mover-derecha {
+    left: calc(100% - 295px);
+
+    transform: translateX(-50%);
+}
+
+
+/* =========================================
+   TRONCO
+   ========================================= */
+
+.tronco {
+    position: absolute;
+
+    width: 18px;
+    height: 230px;
+
+    left: 50%;
+    bottom: 20px;
+
+    background: linear-gradient(
+        to right,
+        #6d4328,
+        #9b6640,
+        #6d4328
+    );
+
+    border-radius: 50% 50% 8px 8px;
+
+    /* Empieza sin crecer */
+    transform: translateX(-50%) scaleY(0);
+
+    /* El crecimiento comienza desde abajo */
+    transform-origin: bottom center;
+
+    z-index: 2;
+}
+
+
+/* Cuando mostramos la escena, crece el tronco */
+
+.escena.mostrar .tronco {
+    animation: crecerTronco 1.8s ease-out forwards;
+}
+
+
+@keyframes crecerTronco {
+
+    0% {
+        transform: translateX(-50%) scaleY(0);
+    }
+
+    100% {
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+
+/* =========================================
+   RAMAS PRINCIPALES
+   ========================================= */
+
+.rama {
+    position: absolute;
+
+    width: 5px;
+    height: 75px;
+
+    left: 50%;
+    bottom: 190px;
+
+    background: linear-gradient(
+        to right,
+        #6d4328,
+        #9b6640,
+        #6d4328
+    );
+
+    border-radius: 10px;
+
+    transform-origin: bottom center;
+
+    opacity: 0;
+
+    z-index: 1;
+}
+
+
+/* RAMA IZQUIERDA SUPERIOR */
+
+.rama-izquierda-1 {
+    bottom: 205px;
+
+    transform:
+        translateX(-50%)
+        rotate(-48deg)
+        scaleY(0);
+}
+
+
+/* RAMA DERECHA SUPERIOR */
+
+.rama-derecha-1 {
+    bottom: 205px;
+
+    transform:
+        translateX(-50%)
+        rotate(48deg)
+        scaleY(0);
+}
+
+
+/* RAMA IZQUIERDA INFERIOR */
+
+.rama-izquierda-2 {
+    height: 35px;
+    bottom: 185px;
+
+    transform:
+        translateX(-50%)
+        rotate(-58deg)
+        scaleY(0);
+}
+
+
+/* RAMA DERECHA INFERIOR */
+
+.rama-derecha-2 {
+    height: 35px;
+    bottom: 185px;
+
+    transform:
+        translateX(-50%)
+        rotate(58deg)
+        scaleY(0);
+}
+
+.escena.mostrar .rama-izquierda-1 {
+    animation: crecerRamaIzquierda1 0.8s ease-out 1.5s forwards;
+}
+
+.escena.mostrar .rama-derecha-1 {
+    animation: crecerRamaDerecha1 0.8s ease-out 1.6s forwards;
+}
+
+.escena.mostrar .rama-izquierda-2 {
+    animation: crecerRamaIzquierda2 0.7s ease-out 1.7s forwards;
+}
+
+.escena.mostrar .rama-derecha-2 {
+    animation: crecerRamaDerecha2 0.7s ease-out 1.8s forwards;
+}
+
+
+/* =========================================
+   CORAZÓN DE FLORES
+   ========================================= */
+
+.corazon-flores {
+    position: absolute;
+
+    width: 380px;
+    height: 330px;
+
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+
+    z-index: 3;
+
+}
+
+
+/* CADA GIRASOL */
+
+.flor-corazon {
+    position: absolute;
+
+    font-size: 25px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+}
+
+
+/* APARICIÓN DE LAS FLORES */
+
+.flor-corazon.aparecer {
+    animation: aparecerFlor 0.45s ease-out forwards;
+}
+
+
+@keyframes aparecerFlor {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.20);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+}
+
+
+
+@keyframes crecerRamaIzquierda1 {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            rotate(-48deg)
+            scaleY(0);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            rotate(-48deg)
+            scaleY(1);
+    }
+}
+
+
+@keyframes crecerRamaDerecha1 {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            rotate(48deg)
+            scaleY(0);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            rotate(48deg)
+            scaleY(1);
+    }
+}
+
+
+@keyframes crecerRamaIzquierda2 {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            rotate(-58deg)
+            scaleY(0);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            rotate(-58deg)
+            scaleY(1);
+    }
+}
+
+
+@keyframes crecerRamaDerecha2 {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            rotate(58deg)
+            scaleY(0);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            rotate(58deg)
+            scaleY(1);
+    }
+}
+
+
+
+.arbol-svg {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    overflow: visible;
+
+    z-index: 1;
+}
+
+
+.tronco-svg,
+.rama-svg {
+    fill: #8b4a20;
+}
+
+/* =========================================
+   CRECIMIENTO DEL ÁRBOL
+   ========================================= */
+
+
+/* =========================================
+   TRONCO
+   ========================================= */
+
+.tronco-svg {
+    clip-path: inset(100% 0 0 0);
+}
+
+.escena.mostrar .tronco-svg {
+    animation: revelarTronco 1.8s ease-out forwards;
+}
+
+@keyframes revelarTronco {
+
+    from {
+        clip-path: inset(100% 0 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+
+/* =========================================
+   TODAS LAS RAMAS
+   ========================================= */
+
+.rama-svg {
+    opacity: 0;
+}
+
+
+/* =========================================
+   RAMAS IZQUIERDAS
+   Se descubren desde el tronco hacia afuera
+   ========================================= */
+
+.rama-svg:nth-of-type(2),
+.rama-svg:nth-of-type(3),
+.rama-svg:nth-of-type(4) {
+    clip-path: inset(0 0 0 100%);
+}
+
+
+/* IZQUIERDA INFERIOR */
+.escena.mostrar .rama-svg:nth-of-type(2) {
+    animation: crecerIzquierda 0.75s ease-out 0.75s forwards;
+}
+
+
+/* IZQUIERDA MEDIA */
+.escena.mostrar .rama-svg:nth-of-type(3) {
+    animation: crecerIzquierda 0.75s ease-out 1.05s forwards;
+}
+
+
+/* IZQUIERDA SUPERIOR */
+.escena.mostrar .rama-svg:nth-of-type(4) {
+    animation: crecerIzquierda 0.75s ease-out 1.35s forwards;
+}
+
+
+@keyframes crecerIzquierda {
+
+    from {
+        opacity: 1;
+        clip-path: inset(0 0 0 100%);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+
+/* =========================================
+   RAMAS DERECHAS
+   Se descubren desde el tronco hacia afuera
+   ========================================= */
+
+.rama-svg:nth-of-type(5),
+.rama-svg:nth-of-type(6) {
+    clip-path: inset(0 100% 0 0);
+}
+
+
+/* DERECHA INFERIOR */
+.escena.mostrar .rama-svg:nth-of-type(5) {
+    animation: crecerDerecha 0.75s ease-out 0.90s forwards;
+}
+
+
+/* DERECHA SUPERIOR */
+.escena.mostrar .rama-svg:nth-of-type(6) {
+    animation: crecerDerecha 0.75s ease-out 1.25s forwards;
+}
+
+
+@keyframes crecerDerecha {
+
+    from {
+        opacity: 1;
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+
+/* =========================================
+   PUNTA CENTRAL
+   ========================================= */
+
+.rama-svg:nth-of-type(7) {
+    clip-path: inset(100% 0 0 0);
+}
+
+
+/* La punta nace del tronco y sube */
+.escena.mostrar .rama-svg:nth-of-type(7) {
+    animation: crecerArriba 0.9s ease-out 1.20s forwards;
+}
+
+
+@keyframes crecerArriba {
+
+    from {
+        opacity: 1;
+        clip-path: inset(100% 0 0 0);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+
+
+/* =========================================
+   LÍNEA DEL SUELO
+   Crece junto con el tronco
+   ========================================= */
+
+.linea-suelo {
+    position: absolute;
+
+    left: 8%;
+
+    /* Ajustaremos este valor si queda unos píxeles arriba/abajo */
+    bottom: 7.7%;
+
+    width: 84%;
+    height: 3px;
+
+    /* VERDE OSCURO */
+    background: #254d32;
+
+    border-radius: 10px;
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    opacity: 0;
+
+    z-index: 2;
+}
+
+
+/* Crece al mismo tiempo que el tronco */
+.escena.mostrar .linea-suelo {
+    animation: crecerSuelo 1.8s ease-out forwards;
+}
+
+
+@keyframes crecerSuelo {
+
+    0% {
+        transform: scaleX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   GIRASOL -> SEMILLA
+   ========================================= */
+
+.girasol-inicio {
+    transition:
+        transform 0.35s ease,
+        opacity 0.25s ease;
+}
+
+
+.girasol-inicio.convertir-semilla {
+    transform:
+        scale(0.25)
+        rotate(180deg);
+}
+
+
+/* =========================================
+   SEMILLA
+   ========================================= */
+
+.semilla {
+    position: absolute;
+
+    /* SIEMPRE EN EL CENTRO */
+    left: 50%;
+    top: 35%;
+
+    width: 18px;
+    height: 18px;
+
+    background: #6b3a1e;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    z-index: 50;
+
+    pointer-events: none;
+}
+
+
+/* APARECE COMO BOLITA MARRÓN */
+.semilla.aparecer {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transition:
+        opacity 0.15s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================
+   CAÍDA VERTICAL
+   ========================================= */
+
+.semilla.caer {
+    animation:
+        caerSemilla 1.15s
+        cubic-bezier(.55, .05, .75, .45)
+        forwards;
+}
+
+@keyframes caerSemilla {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+        opacity: 1;
+    }
+
+    15% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.90);
+
+        opacity: 1;
+    }
+
+    85% {
+        top: 91%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    92% {
+        top: 91%;
+
+        transform:
+            translate(-50%, -50%)
+            scaleX(1.35)
+            scaleY(0.65);
+    }
+
+    96% {
+        top: 89.8%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.95);
+    }
+
+    100% {
+        top: 91%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   IMPACTO
+   ========================================= */
+
+.semilla.impacto {
+    transition: transform 0.12s ease;
+
+    transform:
+        translate(-50%, -50%)
+        scaleX(1.35)
+        scaleY(0.65);
+}
+
+
+/* =========================================
+   DESAPARECER SEMILLA
+   ========================================= */
+
+.semilla.desaparecer {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.4);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================================
+   MENSAJE SUPERIOR IZQUIERDO
+   ========================================= */
+
+.mensaje-superior {
+    position: absolute;
+
+    left: 11%;
+    top: 17%;
+
+    width: 38%;
+
+    font-size: 29px;
+    font-weight: 600;
+
+    color: #5f3b24;
+
+    line-height: 1.25;
+
+    opacity: 1;
+
+    z-index: 10;
+}
+
+
+/* Cursor mientras escribe */
+.mensaje-superior.escribiendo::after {
+    content: "|";
+
+    margin-left: 3px;
+
+    animation: parpadearCursor 0.7s infinite;
+}
+
+
+@keyframes parpadearCursor {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+/* =========================================
+   MENSAJE DEL CONTADOR
+   ========================================= */
+
+.mensaje-tiempo {
+    position: absolute;
+
+    left: 11%;
+    top: 68%;
+
+    width: 40%;
+
+    font-size: 22px;
+    font-weight: 500;
+
+    color: #5f3b24;
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+    z-index: 10;
+}
+
+.mensaje-tiempo.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+/* =========================================
+   CONTADOR DE AMOR
+   ========================================= */
+
+.contador-amor {
+    position: absolute;
+
+    left: 11%;
+    top: 76%;
+
+    width: 40%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+
+    color: #5f3b24;
+
+    opacity: 0;
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+    z-index: 10;
+}
+
+.contador-amor.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contador-bloque {
+    min-width: 58px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contador-bloque span {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.contador-bloque small {
+    margin-top: 8px;
+
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.contador-separador {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+.mensaje-amor {
+    position: absolute;
+
+    left: 11%;
+    top: 34%;
+
+    width: 38%;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.15;
+
+    color: #5f3b24;
+
+    white-space: pre-line;
+
+    z-index: 10;
+}
+
+.mensaje-amor.escribiendo::after {
+    content: "|";
+    margin-left: 2px;
+    animation: parpadearCursor 0.7s infinite;
+}
+
+
+.flor-cayendo {
+    position: absolute;
+
+    pointer-events: none;
+
+    z-index: 8;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        caidaNatural
+        var(--duracion-caida)
+        linear
+        forwards;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+@keyframes caidaNatural {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            translate(0, 0)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+
+    15% {
+        transform:
+            translate(-50%, -50%)
+            translate(
+                calc(
+                    var(--caida-x) * 0.06 +
+                    var(--balanceo-1)
+                ),
+                30px
+            )
+            rotate(-25deg);
+
+        opacity: 1;
+    }
+
+
+    30% {
+        transform:
+            translate(-50%, -50%)
+            translate(
+                calc(
+                    var(--caida-x) * 0.17
+                ),
+                75px
+            )
+            rotate(-65deg);
+
+        opacity: 1;
+    }
+
+
+    48% {
+        transform:
+            translate(-50%, -50%)
+            translate(
+                calc(
+                    var(--caida-x) * 0.34 +
+                    var(--balanceo-2)
+                ),
+                145px
+            )
+            rotate(-115deg);
+
+        opacity: 1;
+    }
+
+
+    65% {
+        transform:
+            translate(-50%, -50%)
+            translate(
+                calc(
+                    var(--caida-x) * 0.55
+                ),
+                235px
+            )
+            rotate(-175deg);
+
+        opacity: 1;
+    }
+
+
+    82% {
+        transform:
+            translate(-50%, -50%)
+            translate(
+                calc(
+                    var(--caida-x) * 0.77 +
+                    var(--balanceo-1)
+                ),
+                335px
+            )
+            rotate(-240deg);
+
+        opacity: 0.85;
+    }
+
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            translate(
+                var(--caida-x),
+                455px
+            )
+            rotate(
+                var(--giro-final)
+            );
+
+        opacity: 0;
+    }
+}
+
+
+.flor-corazon {
+    position: absolute;
+
+    width: 25px;
+    height: 25px;
+
+    object-fit: contain;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.flor-corazon.aparecer {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(var(--escala-flor))
+        rotate(var(--rotacion-flor));
+}
+
+/* =========================================
+   ANIMACIÓN DEL GIRASOL
+   ========================================= */
+
+@keyframes respirar {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.10);
+    }
+}
